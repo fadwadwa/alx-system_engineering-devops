@@ -1,2 +1,2 @@
-#!/bib/bash
+#!/bin/bash
 tr -d "Cc"
