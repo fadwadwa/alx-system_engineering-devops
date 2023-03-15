@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "%s\n" $(echo "ibase=water;$WATER+ibase=stir;$STIR"
+printf "%s\n" $(to_base_bestchol $(to_base_10_water $WATER) $(to_base_10_stir $STIR))
