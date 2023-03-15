@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "%s\n" $(to_base_bestchol $(to_base_10_water $WATER) $(to_base_10_stir $STIR))
+printf "%o\n" $(( $((5#$(echo $WATER | tr "water" "01234"))) + $((5#$(echo $STIR | tr "stir." "01234"))) )) | tr "01234567" "bestchol"
