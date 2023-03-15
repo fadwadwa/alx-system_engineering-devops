@@ -1,0 +1,2 @@
+#!/bin/bash
+water_base10=$(echo "ibase=water; $WATER" | bc
