@@ -1,2 +1,2 @@
 #!/bin/bash
-water_base10=$(echo "ibase=water; $WATER" | bc
+printf "%s\n" $(echo "ibase=water;$WATER+ibase=stir;$STIR"
