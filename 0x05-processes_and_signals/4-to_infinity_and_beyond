@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # dispalys To infinity and beyond indefinitely
 while true; do
     echo "To infinity and beyond"
