@@ -1,24 +1,32 @@
 #!/usr/bin/env bash
 # Does a lot
-
-echo $$ > /var/run/myscript.pid
-
-sigterm_handler() {
-    echo "I hate the kill command"
-    cleanup_and_exit
-}
-sigint_handler() {
-    echo "Y U no love me?!"
-}
-
-cleanup_and_exit() {
+stty -echoctl
+bye()
+{
     rm /var/run/myscript.pid
     exit 0
 }
+do_you_love_kill()
+{
+    echo "I hate the kill command"
+    bye
+}
+do_you_love_me()
+{
+    echo "Y U no love me?!"
+}
+trap do_you_love_kill SIGTERM
+trap do_you_love_me SIGINT
+trap bey SIGQUIT
 
-trap sigterm_handler SIGTERM
-trap sigint_handler SIGINT
-trap 'cleanup_and_exit' SIGQUIT SIGTERM
+exec 2>/dev/null
+
+echo $$ > /var/run/myscript.pid
+while true
+do
+    echo To infinity and beyond
+    sleep 2
+done
 
 while True
 do
