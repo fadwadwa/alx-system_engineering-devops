@@ -25,7 +25,8 @@ cleanup() {
     rm /var/run/myscript.pid
 }
 
-while :; do
+while True
+do
     echo "To infinity and beyond"
     sleep 2
 done
