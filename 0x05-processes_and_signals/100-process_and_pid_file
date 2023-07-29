@@ -5,25 +5,20 @@ echo $$ > /var/run/myscript.pid
 
 sigterm_handler() {
     echo "I hate the kill command"
-    cleanup
-    exit 0
+    cleanup_and_exit
 }
 sigint_handler() {
     echo "Y U no love me?!"
 }
-sigquit_handler() {
-    echo "Y U no love me?!"
-    cleanup
+
+cleanup_and_exit() {
+    rm /var/run/myscript.pid
     exit 0
 }
 
 trap sigterm_handler SIGTERM
 trap sigint_handler SIGINT
-trap sigquit_handler SIGQUIT SIGTERM
-
-cleanup() {
-    rm /var/run/myscript.pid
-}
+trap 'cleanup_and_exit' SIGQUIT SIGTERM
 
 while True
 do
